@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./assets/common.css" />
+		<style type="text/css">
+			body {
+				margin: auto;
+				width: 800px;
+				overflow-x: hidden;
+				background: var(--bg);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- #3874a8 -->
+		<select id="theme">
+			<option value=":root{
+				--text-color:#585858;
+				--main-temp:196deg,100%,47%;
+			}">default</option>
+			<option value=":root{
+				--main-temp:160,100%,33%;
+				--text-color:#3e464c;
+			}">qingcloud</option>
+			<option value=":root{
+				--main-temp:210deg,90%,40%;
+				--text-color:#000;
+			}">linkedin</option>
+			<option value=":root{
+				--main-temp:23deg,100%,50%;
+				--text-color:#666;
+			}">51job</option>
+			<option value=":root{
+				--main-temp:176deg,53%,56%;
+				--text-color:#61687c;
+			}">boss</option>
+		</select>
+		<div><iframe src="./assets/1_1.html" scrolling="no" width="100%" height="1060" frameborder="0"></iframe></div>
+		<div style="clear: both; "></div>
+		<div><iframe src="./assets/2_1.html" scrolling="no" width="100%" height="1018" frameborder="0"></iframe></div>
+		<div style="clear: both; "></div>
+		<div><iframe src="./assets/3_1.html" scrolling="no" width="100%" height="450" frameborder="0"></iframe></div>
+		<div style="clear: both; "></div>
+		<script type="text/javascript">
+			const themeBtn = document.getElementById('theme');
+			themeBtn.selectedIndex = localStorage.getItem('theme')
+			changeTheme(themeBtn.value)
+			
+			window.onload = () => {
+				themeBtn.addEventListener('change', function() {
+					localStorage.setItem('theme', themeBtn.selectedIndex);
+					changeTheme(this.value);
+				})
+			}
+
+			function changeTheme(value) {
+				window.document.styleSheets[0].insertRule(value, window.document.styleSheets[0].cssRules.length);
+				let i = 0;
+				while (window[i]) {
+					const stylesheet = window[i].document.styleSheets[0]
+					try{
+						stylesheet.insertRule(value, stylesheet.cssRules.length)
+					}catch(e){
+						//TODO handle the exception
+					}
+					i++
+				}
+			}
+		</script>
+	</body>
+</html>

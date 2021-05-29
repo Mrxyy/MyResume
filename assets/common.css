@@ -1,0 +1,17 @@
+:root{
+	--text-color:#585858;
+	--main-temp:196deg,100%,47%;
+	--main:hsl(var(--main-temp));
+	--bg:hsla(var(--main-temp),0.16);
+}
+
+#theme{
+	position: absolute;
+	outline: none;
+	top:10px;
+	color: var(--main);
+	border: currentcolor 1px solid;
+	background: var(--bg);
+	border-radius: 3px;
+	padding-left: 10px;
+}
