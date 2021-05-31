@@ -15,41 +15,43 @@
 		</style>
 	</head>
 	<body>
-  <div class="loader">
-    <div class="text">Loading...</div>
-    <div class="horizontal">
-      <div class="circlesup">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+    <div class="container-load" id="container-load">
+       <div class="loader">
+        <div class="text">Loading...</div>
+        <div class="horizontal">
+          <div class="circlesup">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+          <div class="circlesdwn">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="vertical">
+          <div class="circlesup">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+          <div class="circlesdwn">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
       </div>
-      <div class="circlesdwn">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
+       </div>
     </div>
-    <div class="vertical">
-      <div class="circlesup">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-      <div class="circlesdwn">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
 		<!-- #3874a8 -->
 		<select id="theme">
 			<option value=":root{
@@ -81,17 +83,22 @@
 		<div style="clear: both; "></div>
 		<script type="text/javascript">
 			const themeBtn = document.getElementById('theme');
+      const containerLoad = document.getElementById('container-load');
 			themeBtn.selectedIndex = localStorage.getItem('theme')
 			window.onload = () => {
         changeTheme(themeBtn.value)
 				themeBtn.addEventListener('change', function() {
-					localStorage.setItem('theme', themeBtn.selectedIndex);
-					changeTheme(this.value);
+					localStorage.setItem('theme', themeBtn.selectedIndex)
+					changeTheme(this.value)
 				})
+        
+        requestAnimationFrame(function(){
+          containerLoad.style.display = "none"
+        })
 			}
 
 			function changeTheme(value) {
-				window.document.styleSheets[0].insertRule(value, window.document.styleSheets[0].cssRules.length);
+				window.document.styleSheets[0].insertRule(value, window.document.styleSheets[0].cssRules.length)
 				let i = 0;
 				while (window[i]) {
 					const stylesheet = window[i].document.styleSheets[0]
