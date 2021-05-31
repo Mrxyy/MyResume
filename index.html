@@ -46,9 +46,8 @@
 		<script type="text/javascript">
 			const themeBtn = document.getElementById('theme');
 			themeBtn.selectedIndex = localStorage.getItem('theme')
-			changeTheme(themeBtn.value)
-			
 			window.onload = () => {
+        changeTheme(themeBtn.value)
 				themeBtn.addEventListener('change', function() {
 					localStorage.setItem('theme', themeBtn.selectedIndex);
 					changeTheme(this.value);
